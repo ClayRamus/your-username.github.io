@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clayton Ramus — Portfolio</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --bg-card: #171a21;
+    --text: #e8e9ec;
+    --text-muted: #9a9ea8;
+    --accent: #6ee7b7;
+    --border: #262a33;
+    --max-width: 980px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+  header, main, footer {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  header {
+    padding-top: 72px;
+    padding-bottom: 40px;
+  }
+  h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .tagline {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-top: 8px;
+  }
+  nav {
+    margin-top: 28px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  nav a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  section {
+    padding: 48px 0;
+    border-top: 1px solid var(--border);
+  }
+  section h2 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+  #about {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  #about img {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+  }
+  #about p {
+    color: var(--text-muted);
+    margin-bottom: 14px;
+  }
+  #about h3 {
+    font-size: 1rem;
+    margin-top: 22px;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    margin-top: 6px;
+  }
+  .skills-grid h4 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .skills-grid ul {
+    list-style: none;
+    color: var(--text-muted);
+    font-size: 0.92rem;
+  }
+  .skills-grid li {
+    padding: 3px 0;
+  }
+  @media (max-width: 640px) {
+    #about {
+      grid-template-columns: 1fr;
+    }
+    #about img {
+      max-width: 220px;
+    }
+  }
+  .project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 26px;
+    margin-bottom: 24px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .project-card.has-images {
+    grid-template-columns: 1fr;
+  }
+  .project-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 10px;
+  }
+  .project-card > p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+  }
+  .project-card ul {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    padding-left: 20px;
+    margin-bottom: 14px;
+  }
+  .project-card li {
+    padding: 2px 0;
+  }
+  .project-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+  .tag {
+    font-size: 0.75rem;
+    color: var(--accent);
+    background: rgba(110, 231, 183, 0.1);
+    padding: 3px 9px;
+    border-radius: 999px;
+  }
+  .project-images {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .project-images img {
+    height: 180px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    object-fit: cover;
+  }
+  .subsection-label {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 36px 0 16px;
+  }
+  #contact a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  #contact a:hover {
+    text-decoration: underline;
+  }
+  #contact p {
+    margin-bottom: 6px;
+    color: var(--text-muted);
+  }
+  footer {
+    padding: 40px 24px 60px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+</style>
+</head>
+<body>
+
+  <header>
+    <h1>Clayton Ramus</h1>
+    <p class="tagline">Electrical Engineering student — embedded systems, robotics, controls, sensor integration.</p>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about">
+      <img src="https://static.wixstatic.com/media/8aa29e_f5c7a91dcd2b4774beccd818faa30473~mv2.png/v1/fill/w_391,h_350,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/8aa29e_f5c7a91dcd2b4774beccd818faa30473~mv2.png" alt="Clayton Ramus">
+      <div>
+        <h2>About Me</h2>
+        <p>
+          I am an Electrical Engineering student with experience in embedded systems, robotics, controls,
+          circuit analysis, and sensor integration. Through my coursework and projects, I have worked with
+          microcontrollers, sensors, MATLAB, C/C++, and Simulink. I enjoy projects that involve building,
+          testing, troubleshooting, and improving systems until they work reliably.
+        </p>
+        <p>
+          Outside of technical work, I have also developed leadership, communication, and teamwork skills
+          through student leadership roles and campus involvement.
+        </p>
+
+        <h3>Technical Skills</h3>
+        <div class="skills-grid">
+          <div>
+            <h4>Programming</h4>
+            <ul>
+              <li>C/C++</li>
+              <li>Python</li>
+              <li>MATLAB</li>
+              <li>Java</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Hardware &amp; Embedded</h4>
+            <ul>
+              <li>MSP430</li>
+              <li>TM4C1294XL</li>
+              <li>Raspberry Pi Pico</li>
+              <li>Sensors</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Software &amp; Tools</h4>
+            <ul>
+              <li>Visual Studio Code</li>
+              <li>Code Composer Studio</li>
+              <li>MATLAB / Simulink</li>
+              <li>GitHub</li>
+              <li>SolidWorks</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+
+      <div class="subsection-label">School Projects</div>
+
+      <div class="project-card">
+        <h3>Raspberry Pi Pico Environmental Test Kit</h3>
+        <div class="project-tags"><span class="tag">Raspberry Pi Pico</span><span class="tag">FreeRTOS</span><span class="tag">I2C / SPI / ADC / PWM</span></div>
+        <p>
+          Helped create a Raspberry Pi Pico test kit that acts as a hub for environmental sensor readings.
+          The system used a temperature and humidity sensor, pressure sensor, photoresistor light sensor,
+          240x240 LCD screen, and a custom D-pad made from buttons. The user could switch between different
+          sensor screens and view real-time data through visual displays. The project used I2C for the
+          pressure and temperature/humidity sensors, SPI for the display, ADC for the light sensor, GPIO
+          for buttons, and PWM for display brightness control. The system was organized with FreeRTOS tasks
+          so the buttons, sensors, display, and stopwatch could run separately.
+        </p>
+        <ul>
+          <li>Integrated temperature, humidity, pressure, and light sensors</li>
+          <li>Built a user interface with an LCD screen and custom D-pad</li>
+          <li>Used FreeRTOS tasks to organize sensor, button, display, and stopwatch functions</li>
+          <li>Used an I2C mutex to prevent communication conflicts between shared sensors</li>
+          <li>Displayed sensor data through visual UI screens, including gauges, bars, and changing graphics</li>
+        </ul>
+        <div class="project-images">
+          <img src="https://static.wixstatic.com/media/8aa29e_c1a6e7935339451abedaa9e08d04960c~mv2.png/v1/fill/w_385,h_287,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/8aa29e_c1a6e7935339451abedaa9e08d04960c~mv2.png" alt="Pi Pico Environmental Test Kit">
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>MSP430 Guitar Hero Game</h3>
+        <div class="project-tags"><span class="tag">MSP430F5529</span><span class="tag">Timers / Interrupts</span><span class="tag">PWM</span></div>
+        <p>
+          Helped build a Guitar Hero-style game on the MSP430F5529 LaunchPad. The game played a song using
+          a buzzer, flashed LEDs to match notes, and required the user to press the correct button during a
+          timing window. The project used digital I/O, timers, interrupts, PWM sound generation, and LCD
+          display integration. A Timer A2 interrupt updated a global timer every 5 ms, which allowed the
+          game to track note durations and check user input without blocking the CPU.
+        </p>
+        <ul>
+          <li>Programmed real-time note timing using Timer A2 interrupts</li>
+          <li>Used PWM to generate buzzer tones for different musical notes</li>
+          <li>Mapped song notes to LED outputs and button inputs</li>
+          <li>Created data structures to store pitch, duration, and LED values</li>
+          <li>Added scoring, mistake tracking, win/loss screens, and LCD feedback</li>
+        </ul>
+        <div class="project-images">
+          <img src="https://static.wixstatic.com/media/8aa29e_1cf57da30117428299ce8249a2b37140~mv2.jpeg/v1/fill/w_339,h_452,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_7184.jpeg" alt="MSP430 Guitar Hero Game">
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>MSP430 Simon Game</h3>
+        <div class="project-tags"><span class="tag">MSP430F5529</span><span class="tag">Finite State Machine</span><span class="tag">LCD / Keypad</span></div>
+        <p>
+          Helped implement a Simon-style memory game using the MSP430F5529 board. The game flashed a growing
+          pseudo-random LED sequence and required the player to repeat it using corresponding buttons. The
+          system used a finite state machine with states for the welcome screen, countdown, sequence playback,
+          user input, checking input, and updating the game. The game also used the LCD screen for
+          instructions and feedback, LEDs for visual cues, a buzzer for sound, and keypad controls for start,
+          stop, and reset functions.
+        </p>
+        <ul>
+          <li>Designed game flow using a finite state machine</li>
+          <li>Integrated LEDs, buttons, keypad input, buzzer sounds, and LCD feedback</li>
+          <li>Stored and compared user input against a generated sequence</li>
+          <li>Added increasing difficulty by reducing the delay as rounds progressed</li>
+          <li>Implemented reset and stop controls for better usability</li>
+        </ul>
+        <div class="project-images">
+          <img src="https://static.wixstatic.com/media/8aa29e_cf69e0ec0d794901986b001813806a06~mv2.png/v1/fill/w_485,h_546,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Untitled%20drawing.png" alt="MSP430 Simon Game">
+        </div>
+      </div>
+
+      <div class="subsection-label">Personal Projects</div>
+
+      <div class="project-card">
+        <h3>Guitar Electronics and Projects</h3>
+        <div class="project-tags"><span class="tag">Analog Circuits</span><span class="tag">Soldering</span><span class="tag">Prototyping</span></div>
+        <p>
+          Outside of coursework, I have spent over six years working with analog guitar electronics. I have
+          created custom wiring schematics, modified pickup configurations, built two guitars from scratch,
+          and rebuilt or modified ten guitars. This work gave me hands-on experience with analog circuits,
+          soldering, wiring layout, troubleshooting, and physical prototyping.
+        </p>
+        <ul>
+          <li>Created custom wiring schematics</li>
+          <li>Modified pickup configurations</li>
+          <li>Rewired and repaired analog guitar electronics</li>
+          <li>Built and rebuilt guitar systems from scratch</li>
+          <li>Troubleshot wiring, signal, and hardware issues</li>
+        </ul>
+        <div class="project-images">
+          <img src="https://static.wixstatic.com/media/8aa29e_06fd4ad365a4448c81f784442ece86d0~mv2.jpeg/v1/fill/w_274,h_364,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/8aa29e_06fd4ad365a4448c81f784442ece86d0~mv2.jpeg" alt="Guitar project">
+          <img src="https://static.wixstatic.com/media/8aa29e_c0a586c46c364dca886645d96fde9e13~mv2.jpeg/v1/fill/w_274,h_364,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/8aa29e_c0a586c46c364dca886645d96fde9e13~mv2.jpeg" alt="Guitar project">
+          <img src="https://static.wixstatic.com/media/8aa29e_dc86ba6058b0420182389ee75f7de2b2~mv2.jpeg/v1/fill/w_274,h_364,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/8aa29e_dc86ba6058b0420182389ee75f7de2b2~mv2.jpeg" alt="Guitar project">
+          <img src="https://static.wixstatic.com/media/8aa29e_676c6a0e25a8422389cd131e74526540~mv2.jpeg/v1/fill/w_274,h_364,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/8aa29e_676c6a0e25a8422389cd131e74526540~mv2.jpeg" alt="Guitar project">
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>Night Vision Modification</h3>
+        <div class="project-tags"><span class="tag">Firmware</span><span class="tag">Optics</span><span class="tag">Custom Housing</span></div>
+        <p>
+          This independent project involved modifying open-source firmware and designing a custom optical
+          housing for a night vision system. The project integrated commercial image intensifier components
+          and gave me hands-on experience with both digital and analog night vision systems.
+        </p>
+        <ul>
+          <li>Modified open-source firmware</li>
+          <li>Designed a custom optical housing</li>
+          <li>Integrated commercial image intensifier components</li>
+          <li>Worked with both digital and analog night vision systems</li>
+          <li>Iterated the design around fit, function, and usability</li>
+        </ul>
+        <div class="project-images">
+          <img src="https://static.wixstatic.com/media/8aa29e_c37f8b7e984a4594bec925a8b530e046~mv2.jpeg/v1/fill/w_227,h_250,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/8aa29e_c37f8b7e984a4594bec925a8b530e046~mv2.jpeg" alt="Night vision modification">
+          <img src="https://static.wixstatic.com/media/8aa29e_64e70385cbd54a868db396d791df8d6c~mv2.jpeg/v1/fill/w_232,h_250,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/8aa29e_64e70385cbd54a868db396d791df8d6c~mv2.jpeg" alt="Night vision modification">
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>Mechanical Design and 3D Printed Prototyping</h3>
+        <div class="project-tags"><span class="tag">SolidWorks</span><span class="tag">CAD</span><span class="tag">FDM / Resin Printing</span></div>
+        <p>
+          I have designed and modeled custom components and housing assemblies using SolidWorks, then
+          prepared those designs for 3D printing. These projects required design iteration based on fit,
+          function, and tolerancing requirements. This experience helped me connect mechanical design
+          decisions with real physical constraints during prototyping.
+        </p>
+        <ul>
+          <li>Designed custom parts and housing assemblies</li>
+          <li>CAD-modeled parts in SolidWorks</li>
+          <li>Prepared designs for FDM and resin 3D printing</li>
+          <li>Iterated designs based on fit and function</li>
+          <li>Adjusted tolerances based on physical test results</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:clayramus@gmail.com">clayramus@gmail.com</a></p>
+      <p>School email: <a href="mailto:cramus@wpi.edu">cramus@wpi.edu</a></p>
+      <p>GitHub: <a href="#">github.com/your-username</a></p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2026 Clayton Ramus. Built with HTML &amp; CSS, hosted on GitHub Pages.
+  </footer>
+
+</body>
+</html>
