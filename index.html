@@ -168,14 +168,54 @@
   }
   .project-images {
     display: flex;
-    gap: 10px;
+    gap: 16px;
     flex-wrap: wrap;
+    justify-content: center;
   }
   .project-images img {
     height: 180px;
     border-radius: 8px;
     border: 1px solid var(--border);
     object-fit: cover;
+  }
+  #about img,
+  .project-images img {
+    cursor: zoom-in;
+    transition: opacity 0.15s;
+  }
+  #about img:hover,
+  .project-images img:hover {
+    opacity: 0.85;
+  }
+  .lightbox-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(30, 29, 24, 0.85);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    cursor: zoom-out;
+  }
+  .lightbox-overlay.active {
+    display: flex;
+  }
+  .lightbox-overlay img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  }
+  .lightbox-close {
+    position: fixed;
+    top: 24px;
+    right: 32px;
+    color: #fbfaf0;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 1001;
   }
   .subsection-label {
     color: var(--text-muted);
@@ -419,6 +459,37 @@
   <footer>
     &copy; 2026 Clayton Ramus. Built with HTML &amp; CSS, hosted on GitHub Pages.
   </footer>
+
+  <div class="lightbox-overlay" id="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img id="lightbox-img" src="" alt="Expanded photo">
+  </div>
+
+  <script>
+    (function () {
+      var overlay = document.getElementById('lightbox');
+      var overlayImg = document.getElementById('lightbox-img');
+      var expandable = document.querySelectorAll('#about img, .project-images img');
+
+      expandable.forEach(function (img) {
+        img.addEventListener('click', function () {
+          overlayImg.src = img.src;
+          overlayImg.alt = img.alt;
+          overlay.classList.add('active');
+        });
+      });
+
+      function closeLightbox() {
+        overlay.classList.remove('active');
+        overlayImg.src = '';
+      }
+
+      overlay.addEventListener('click', closeLightbox);
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeLightbox();
+      });
+    })();
+  </script>
 
 </body>
 </html>
